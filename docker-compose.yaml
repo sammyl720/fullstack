@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-todo:/data/db
+    env_file:
+      - ./config/mongo.env
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    env_file:
+      - ./config/backend.env
+    ports:
+      - "80:80"
+    depends_on:
+      - mongodb
+
+volumes:
+  data-todo:
