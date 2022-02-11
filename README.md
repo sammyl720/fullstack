@@ -30,3 +30,5 @@ docker-compose up
 ```
 
 Voilà! The [application](http://localhost) should be up and running
+
+![Todo Application screenshot](todo-screenshot.png)
