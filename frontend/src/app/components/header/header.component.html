@@ -1,0 +1,9 @@
+<nav class="navbar py-4 navbar-dark bg-dark d-flex justify-between">
+  <span class="navbar-brand mb-0 h1 leading-2">Todos</span>
+  <form [formGroup]="todoForm" (submit)="onSubmit()">
+    <div class="input-group">
+      <input type="text" placeholder="Pick up dry cleaners..." class="form-control" formControlName="text" required>
+      <button type="submit" class="input-group-text"><i class="fa-solid fa-list-check"></i></button>
+    </div>
+  </form>
+</nav>

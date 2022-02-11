@@ -1,0 +1,5 @@
+<div class="row text-secondary">
+  <div class="col-12 my-2" *ngFor="let todo of (todos$ | async)">
+    <app-todo [todo]="todo"></app-todo>
+  </div>
+</div>

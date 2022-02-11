@@ -1,0 +1,48 @@
+<div class="card position-relative">
+  <div [style.font-size.px]="18" class="position-absolute top-0 end-0 me-2 mt-2 d-flex">
+    <span [style.cursor]="'pointer'"
+      (click)="toggleEditMode()"
+    >
+      <i  [ngClass]="{
+        'fa-pen-to-square': !inEditMode,
+        'fa-cloud': inEditMode
+      }"
+       class="fa-solid" ></i>
+    </span>
+    <span [style.cursor]="'pointer'" class="text-danger ms-2" (click)="deleteTodo()">
+      <i class="fa-solid fa-trash"
+      ></i>
+    </span>
+  </div>
+  <div class="card-body">
+    <div class="d-flex align-items-baseline justify-content-start">
+      <div class="card-title">
+        <h5>
+          <span *ngIf="!inEditMode">
+            {{ todo.text }}
+          </span>
+        </h5>
+        <input
+          *ngIf="inEditMode && todoCopy"
+          type="text"
+          class="custom-control h5"
+          [(ngModel)]="todoCopy.text"
+         />
+      </div>
+      <div>
+        <p *ngIf="!inEditMode" class="card-text ms-2" [class.text-primary]="todo.completed">
+          {{ todo?.completed ? 'Completed' : 'Pending' }}
+        </p>
+        <div *ngIf="inEditMode" class="form-check ms-2" [class.text-primary]="todoCopy?.completed">
+          <label class="form-check-label" for="flexCheckChecked">
+            {{ todoCopy?.completed ? 'Completed' : 'Pending' }}
+          </label>
+          <input *ngIf="todoCopy" class="form-check-input" type="checkbox" id="flexCheckChecked" [(ngModel)]="todoCopy.completed">
+        </div>
+      </div>
+    </div>
+    <small class="text-muted">
+      Created: {{ todo.createdAt | date: 'medium' }}
+    </small>
+  </div>
+</div>
