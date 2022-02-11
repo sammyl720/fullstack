@@ -17,10 +17,17 @@ services:
     container_name: backend
     env_file:
       - ./config/backend.env
+    depends_on:
+      - mongodb
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
     ports:
       - "80:80"
     depends_on:
-      - mongodb
+      - backend
 
 volumes:
   data-todo:
